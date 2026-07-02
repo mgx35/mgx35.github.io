@@ -31,6 +31,16 @@ const PROFILE = {
 
 const PROJECTS = [
   {
+    title: "Market Research Agent Swarm",
+    blurb: "A production multi-agent system that automates and augments the full market-research lifecycle for a global research organization — designed to retarget across multiple industries.",
+    problem: "Syndicated market research is slow and analyst-heavy: identifying sources, building top-down and bottom-up estimates, reconciling conflicting data, and quality-checking every figure before it reaches clients. Scaling that across many markets and industries strains any analyst team.",
+    approach: "A coordinator agent dispatches a roster of specialized sub-agents, each owning a bounded step of the pipeline — source identification, estimation, cross-source reconciliation, data-quality validation, and client-ready deliverables. A shared knowledge base and strict conventions keep every output auditable and formula-driven. The architecture is industry-agnostic: it retargets to a new industry by swapping the specification inputs and entity universe.",
+    impact: "Compresses a manual, per-market research cycle into a systematic, auditable first pass — reusable across industries and run end-to-end on live market builds.",
+    tags: ["Claude Agent SDK", "Multi-Agent", "Market Research", "Data Quality", "Enterprise"],
+    featured: true,
+    link: ""
+  },
+  {
     title: "Full-Auto AI Hedge Fund",
     blurb: "A fully autonomous trading operation — a deterministic trading desk plus a nightly multi-agent strategy desk that runs itself on a schedule, with human approval gates on every structural change.",
     problem: "Discretionary trading doesn't scale, and putting an LLM in the execution loop is dangerous — non-deterministic, and it blows its context window mid-session. The real challenge: let AI evolve the strategy while keeping execution mechanical, auditable, and reversible.",
