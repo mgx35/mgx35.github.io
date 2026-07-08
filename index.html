@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mykola Golovko — AI Product Portfolio</title>
+<meta name="description" content="AI projects and product work by Mykola Golovko, Product & Program Manager." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+<!-- ============================================================
+     EDIT YOUR CONTENT HERE  (only this <script> block)
+     - PROFILE: your name, role, tagline, email, links
+     - PROJECTS: one object per project. Copy a block to add one.
+       featured:true pins to top. link:"" hides the Open button.
+     ============================================================ -->
+<script>
+const PROFILE = {
+  name: "Mykola Golovko",
+  role: "Product & Program Manager — AI Products",
+  tagline:
+    "PM/TPM who builds with AI, not just around it. I design the prompt architecture, define the success metrics, and ship the workflow.",
+  email: "mykola.golovko@gmail.com",
+  links: {
+    linkedin: "https://www.linkedin.com/in/mykola-golovko-69706317",
+    github: "https://github.com/mgx35",          // optional
+    resume: "Mykola_Golovko_Resume.docx"         // optional download
+  }
+};
+
+const PROJECTS = [
+  {
+    title: "Market Research Agent Swarm",
+    blurb: "A production multi-agent system that automates and augments the full market-research lifecycle for a global research organization — designed to retarget across multiple industries.",
+    problem: "Syndicated market research is slow and analyst-heavy: identifying sources, building top-down and bottom-up estimates, reconciling conflicting data, and quality-checking every figure before it reaches clients. Scaling that across many markets and industries strains any analyst team.",
+    approach: "A coordinator agent dispatches a roster of specialized sub-agents, each owning a bounded step of the pipeline — source identification, estimation, cross-source reconciliation, data-quality validation, and client-ready deliverables. A shared knowledge base and strict conventions keep every output auditable and formula-driven. The architecture is industry-agnostic: it retargets to a new industry by swapping the specification inputs and entity universe.",
+    impact: "Compresses a manual, per-market research cycle into a systematic, auditable first pass — reusable across industries and run end-to-end on live market builds.",
+    tags: ["Claude Agent SDK", "Multi-Agent", "Market Research", "Data Quality", "Enterprise"],
+    featured: true,
+    link: ""
+  },
+  {
+    title: "Full-Auto AI Hedge Fund",
+    blurb: "A fully autonomous trading operation — a deterministic trading desk plus a nightly multi-agent strategy desk that runs itself on a schedule, with human approval gates on every structural change.",
+    problem: "Discretionary trading doesn't scale, and putting an LLM in the execution loop is dangerous — non-deterministic, and it blows its context window mid-session. The real challenge: let AI evolve the strategy while keeping execution mechanical, auditable, and reversible.",
+    approach: "Two separated desks. The trading desk is deterministic Python subprocesses — no LLM in-loop — firing six scheduled jobs across the trading day (morning sizing, intraday stops, evening review, watchdog). The strategy desk runs a nightly Claude Agent SDK swarm of four subagents against a bounded manifest, proposing changes that a decision queue gates for human approval. A backtest harness, walk-forward P&L audit, and a one-file emergency stop wrap the whole system.",
+    impact: "An AI hedge fund that operates unattended on Alpaca, evolves its own strategy under human oversight, and keeps every decision traceable and reversible.",
+    tags: ["Claude Agent SDK", "Multi-Agent", "Autonomous Trading", "Python", "Alpaca"],
+    featured: true,
+    link: "https://github.com/mgx35/full-auto-ai-hedge-fund"
+  },
+  {
+    title: "Quant Strategy Swarm",
+    blurb: "A multi-agent quant research swarm built on the Claude Agent SDK — specialized agents that research, backtest, and risk-check trading strategies before any capital is committed.",
+    problem: "Strategy research is slow, single-threaded, and prone to confirmation bias. One analyst rarely stress-tests an idea across regime, correlation, and risk before it ships.",
+    approach: "Specialized agents (research, strategy, risk) coordinate through an orchestrator with a real toolbelt: market data, regime detection, correlation filtering, a backtest engine, portfolio construction, and risk sizing. Each idea is independently backtested and risk-vetted, with Alpaca wired for execution.",
+    impact: "Turns strategy research into a parallel, adversarial process where every idea is backtested and risk-checked before it reaches the trading desk.",
+    tags: ["Claude Agent SDK", "Multi-Agent", "Backtesting", "Quant", "Python"],
+    featured: true,
+    link: "https://github.com/mgx35/quant-strategy-swarm"
+  },
+  {
+    title: "Iran War Gauge",
+    blurb: "A market-implied gauge for the Iran war — how long the market thinks it lasts and which countries it thinks are hit hardest, read entirely off commodity-futures and equity spreads with no black-box scoring.",
+    problem: "Geopolitical 'analysis' is usually opinion-mining. But the question 'what does the market actually price for this war?' has a quantitative answer hidden in spreads — if you decompose them honestly.",
+    approach: "Pulls commodity-futures and equity prices from Yahoo Finance, computes a curated basket of spreads (crude calendar spreads, Brent–WTI, refined-product cracks, LNG, fertilizer inputs, and GCC/Israel country ETFs), and compares each against a January-2026 pre-war baseline. The resulting 'war premium' is decomposed into implied duration (term structure) and per-country impact. Every number traces back to an exact ticker, date, and closing price.",
+    impact: "A fully auditable read on market consensus — implied war duration and per-country impact — where any figure can be traced to the price that produced it.",
+    tags: ["Quant", "Geopolitics", "Python", "yfinance", "Auditable"],
+    featured: false,
+    link: "https://github.com/mgx35/iran-war-gauge"
+  },
+  {
+    title: "AI Work Highlights Extractor",
+    blurb: "An AI agent that mines messy work history and Claude conversation exports, then surfaces the AI accomplishments people undersell — translated into resume- and LinkedIn-ready language.",
+    problem: "PMs and TPMs consistently understate their AI work. They assume 'everyone uses ChatGPT,' or credit the ML team for the technical work, missing that choosing the model, designing the prompt strategy, and defining success metrics IS the expertise.",
+    approach: "Structured interview flows plus a translation engine that converts raw experience into quantified, ATS-friendly bullets. Scans pasted Claude transcripts for evidence of strategic, technical, and leadership signal, then outputs STAR-format talking points.",
+    impact: "Turns a vague 'I used AI at work' into a defensible portfolio of accomplishments with metrics and narrative.",
+    tags: ["LLM", "Prompt Engineering", "Career Tooling", "Claude"],
+    featured: false,
+    link: ""
+  }
+];
+</script>
+
+<style>
+:root{
+  --max:1080px;--radius:16px;--radius-sm:10px;--gap:1.25rem;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  --font:"Inter",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+html[data-theme="dark"]{
+  --bg:#0a0c10;--bg-soft:#11151c;--card:#141923;--card-hover:#1a2030;
+  --border:#232b38;--text:#e8edf4;--text-dim:#97a3b6;
+  --accent:#6ea8fe;--accent-2:#b692ff;--glow:rgba(110,168,254,.18);
+}
+html[data-theme="light"]{
+  --bg:#f7f8fb;--bg-soft:#fff;--card:#fff;--card-hover:#fff;
+  --border:#e4e8ef;--text:#131720;--text-dim:#5a6678;
+  --accent:#2f6bff;--accent-2:#7c4dff;--glow:rgba(47,107,255,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .4s var(--ease),color .4s var(--ease)}
+a{color:inherit;text-decoration:none}
+
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1.25rem,5vw,3rem);background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav__brand{font-weight:800;font-size:1.1rem;letter-spacing:.04em;background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav__links{display:flex;align-items:center;gap:clamp(.9rem,3vw,1.8rem)}
+.nav__links a{font-size:.92rem;color:var(--text-dim);transition:color .2s}
+.nav__links a:hover{color:var(--text)}
+.theme-toggle{background:var(--card);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:grid;place-items:center;transition:background .2s,transform .3s var(--ease)}
+.theme-toggle:hover{background:var(--card-hover);transform:rotate(180deg)}
+
+.hero{max-width:var(--max);margin:0 auto;padding:clamp(4rem,12vw,8rem) clamp(1.25rem,5vw,3rem) clamp(3rem,8vw,5rem);position:relative}
+.hero::before{content:"";position:absolute;top:10%;left:-10%;width:480px;height:480px;background:radial-gradient(circle,var(--glow),transparent 70%);filter:blur(20px);z-index:-1;pointer-events:none}
+.hero__eyebrow{font-family:var(--mono);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem}
+.hero__title{font-size:clamp(2.6rem,8vw,5rem);font-weight:800;line-height:1.02;letter-spacing:-.02em}
+.hero__role{font-size:clamp(1.1rem,3vw,1.5rem);font-weight:600;margin-top:.6rem;background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content}
+.hero__tagline{margin-top:1.4rem;max-width:640px;font-size:clamp(1rem,2.2vw,1.18rem);color:var(--text-dim)}
+.hero__cta{margin-top:2.2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.4rem;border-radius:var(--radius-sm);font-weight:600;font-size:.95rem;cursor:pointer;border:1px solid transparent;transition:transform .2s var(--ease),background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn--primary{background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 24px -8px var(--glow)}
+.btn--ghost{border-color:var(--border);color:var(--text)}
+.btn--ghost:hover{background:var(--card)}
+
+.section{max-width:var(--max);margin:0 auto;padding:clamp(3rem,8vw,5rem) clamp(1.25rem,5vw,3rem)}
+.section--narrow{max-width:760px}
+.section__head{margin-bottom:2.2rem}
+.section__title{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.01em}
+.section__sub{color:var(--text-dim);margin-top:.4rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--gap)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;cursor:pointer;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .3s var(--ease),border-color .3s,background .3s}
+.card::after{content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;background:linear-gradient(130deg,var(--accent),transparent 40%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{transform:translateY(-4px);background:var(--card-hover);border-color:transparent}
+.card:hover::after{opacity:1}
+.card__featured{position:absolute;top:1rem;right:1rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border);border-radius:999px;padding:.2rem .6rem}
+.card__title{font-size:1.2rem;font-weight:700;margin-bottom:.6rem;padding-right:4rem}
+.card__blurb{color:var(--text-dim);font-size:.95rem;flex:1}
+.card__tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
+.tag{font-family:var(--mono);font-size:.7rem;color:var(--text-dim);background:var(--bg-soft);border:1px solid var(--border);border-radius:999px;padding:.25rem .6rem}
+.card__more{margin-top:1.1rem;font-size:.85rem;font-weight:600;color:var(--accent)}
+
+.prose p{color:var(--text-dim);margin-bottom:1rem;font-size:1.05rem}
+.prose__edit-note{font-size:.8rem!important;font-family:var(--mono);opacity:.6}
+.prose code,.modal__body code{font-family:var(--mono);font-size:.85em;background:var(--bg-soft);border:1px solid var(--border);border-radius:4px;padding:.1em .4em}
+
+.contact{display:flex;flex-wrap:wrap;gap:.9rem}
+.contact a{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.3rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--card);font-weight:500;transition:transform .2s var(--ease),border-color .2s,background .2s}
+.contact a:hover{transform:translateY(-2px);border-color:var(--accent);background:var(--card-hover)}
+
+.footer{text-align:center;padding:3rem 1.25rem;color:var(--text-dim);font-size:.85rem;border-top:1px solid var(--border)}
+
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1.25rem}
+.modal[aria-hidden="false"]{display:flex}
+.modal__backdrop{position:absolute;inset:0;background:rgba(4,6,10,.66);backdrop-filter:blur(4px);animation:fade .25s var(--ease)}
+.modal__panel{position:relative;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);max-width:620px;width:100%;max-height:86vh;overflow-y:auto;padding:2rem;animation:pop .3s var(--ease)}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.modal__close{position:absolute;top:1rem;right:1rem;background:var(--bg-soft);border:1px solid var(--border);color:var(--text-dim);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.85rem;transition:color .2s,background .2s}
+.modal__close:hover{color:var(--text);background:var(--card-hover)}
+.modal__title{font-size:1.5rem;font-weight:700;margin-bottom:.8rem;padding-right:2rem}
+.modal__tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.modal__body h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:1.3rem 0 .4rem}
+.modal__body p{color:var(--text-dim)}
+.modal__link{margin-top:1.8rem}
+.modal__link.hidden{display:none}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a href="#top" class="nav__brand" id="navBrand">MG</a>
+  <nav class="nav__links">
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme"><span>◐</span></button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <p class="hero__eyebrow">AI Product Portfolio</p>
+    <h1 class="hero__title" id="heroName">—</h1>
+    <p class="hero__role" id="heroRole">—</p>
+    <p class="hero__tagline" id="heroTagline">—</p>
+    <div class="hero__cta">
+      <a href="#projects" class="btn btn--primary">View projects</a>
+      <a href="#contact" class="btn btn--ghost">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="section__head">
+      <h2 class="section__title">Projects</h2>
+      <p class="section__sub">AI tools and workflows I designed and shipped.</p>
+    </div>
+    <div class="grid" id="projectGrid"></div>
+  </section>
+
+  <section id="about" class="section section--narrow">
+    <div class="section__head"><h2 class="section__title">About</h2></div>
+    <div class="prose" id="aboutProse">
+      <p>I'm a Product and Program Manager who works hands-on with AI. My edge isn't that I use the tools — it's that I architect them: choosing the model, designing the prompt strategy, defining what "good" means, and shipping the workflow around the uncertainty.</p>
+      <p>The projects here are autonomous and multi-agent systems I designed and built — most of them on the Claude Agent SDK. They run real workloads: an unattended trading operation, a quant research swarm, a market-implied geopolitical gauge. Each is opinionated about safety and auditability, with humans kept at the edge for judgment and override.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section section--narrow">
+    <div class="section__head">
+      <h2 class="section__title">Get in touch</h2>
+      <p class="section__sub">Open to AI Product / Program Manager roles.</p>
+    </div>
+    <div class="contact" id="contactLinks"></div>
+  </section>
+</main>
+
+<footer class="footer"><p>Built as a static site — no frameworks, no build step. <span id="footYear"></span></p></footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" data-close aria-label="Close">✕</button>
+    <h3 class="modal__title" id="modalTitle"></h3>
+    <div class="modal__tags" id="modalTags"></div>
+    <div class="modal__body" id="modalBody"></div>
+    <a class="btn btn--primary modal__link" id="modalLink" target="_blank" rel="noopener">Open ↗</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var el=function(id){return document.getElementById(id)};
+  el("heroName").textContent=PROFILE.name;
+  el("heroRole").textContent=PROFILE.role;
+  el("heroTagline").textContent=PROFILE.tagline;
+  el("footYear").textContent=new Date().getFullYear();
+  var initials=PROFILE.name.split(/\s+/).map(function(w){return w[0]}).join("").slice(0,2).toUpperCase();
+  el("navBrand").textContent=initials||"MG";
+
+  var ordered=PROJECTS.slice().sort(function(a,b){return (b.featured?1:0)-(a.featured?1:0)});
+  var grid=el("projectGrid");
+  ordered.forEach(function(p,i){
+    var card=document.createElement("article");
+    card.className="card reveal";
+    card.style.transitionDelay=(i*70)+"ms";
+    card.tabIndex=0;card.setAttribute("role","button");
+    card.innerHTML=(p.featured?'<span class="card__featured">Featured</span>':"")+
+      '<h3 class="card__title">'+esc(p.title)+'</h3>'+
+      '<p class="card__blurb">'+esc(p.blurb)+'</p>'+
+      '<div class="card__tags">'+(p.tags||[]).map(function(t){return '<span class="tag">'+esc(t)+'</span>'}).join("")+'</div>'+
+      '<span class="card__more">Read more →</span>';
+    var open=function(){openModal(p)};
+    card.addEventListener("click",open);
+    card.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}});
+    grid.appendChild(card);
+  });
+
+  var contact=el("contactLinks"),L=PROFILE.links||{};
+  [{label:"Email",href:"mailto:"+PROFILE.email,icon:"✉",show:!!PROFILE.email},
+   {label:"LinkedIn",href:L.linkedin,icon:"in",show:!!L.linkedin},
+   {label:"GitHub",href:L.github,icon:"⌥",show:!!L.github},
+   {label:"Resume",href:L.resume,icon:"↓",show:!!L.resume,download:true}]
+  .filter(function(it){return it.show}).forEach(function(it){
+    var a=document.createElement("a");a.href=it.href;
+    if(it.download)a.setAttribute("download","");
+    if(it.href&&it.href.indexOf("http")===0){a.target="_blank";a.rel="noopener"}
+    a.innerHTML='<span aria-hidden="true">'+it.icon+'</span> '+it.label;
+    contact.appendChild(a);
+  });
+
+  var modal=el("modal");
+  function openModal(p){
+    el("modalTitle").textContent=p.title;
+    el("modalTags").innerHTML=(p.tags||[]).map(function(t){return '<span class="tag">'+esc(t)+'</span>'}).join("");
+    var section=function(label,body){return body?'<h4>'+label+'</h4><p>'+esc(body)+'</p>':""};
+    el("modalBody").innerHTML=section("Overview",p.blurb)+section("Problem",p.problem)+section("Approach",p.approach)+section("Impact",p.impact);
+    var link=el("modalLink");
+    if(p.link){link.href=p.link;link.classList.remove("hidden")}else{link.classList.add("hidden")}
+    modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+  }
+  function closeModal(){modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+  modal.querySelectorAll("[data-close]").forEach(function(n){n.addEventListener("click",closeModal)});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.getAttribute("aria-hidden")==="false")closeModal()});
+
+  var root=document.documentElement,saved=localStorage.getItem("theme");
+  if(saved)root.setAttribute("data-theme",saved);
+  el("themeToggle").addEventListener("click",function(){
+    var next=root.getAttribute("data-theme")==="dark"?"light":"dark";
+    root.setAttribute("data-theme",next);localStorage.setItem("theme",next);
+  });
+
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(function(n){io.observe(n)});
+
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+})();
+</script>
+</body>
+</html>
